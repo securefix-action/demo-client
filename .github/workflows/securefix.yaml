@@ -14,7 +14,7 @@ jobs:
           persist-credentials: false
 
       - run: npm i -g prettier
-      - run: prettier -w
+      - run: prettier -w .
 
       - uses: securefix-action/action@main
         with:
