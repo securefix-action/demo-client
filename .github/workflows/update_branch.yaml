@@ -4,7 +4,7 @@ on: issue_comment
 jobs:
   update_branch:
     runs-on: ubuntu-24.04
-    if: github.event.issue.pull_request && contains(['/update-branch', '/ub'], github.event.comment.body)
+    if: github.event.issue.pull_request && contains(fromJSON('["/update-branch", "/ub"]'), github.event.comment.body)
     steps:
       - uses: securefix-action/update-branch-action@feat-first-pr
         with:
