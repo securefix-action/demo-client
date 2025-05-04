@@ -1,0 +1,14 @@
+---
+name: Approve pull requests
+on: issue_comment
+jobs:
+  approve:
+    name: Approve a pull request (${{github.event.issue.number}})
+    runs-on: ubuntu-24.04
+    if: github.event.issue.pull_request && github.event.comment.body == '/approve'
+    steps:
+      - uses: securefix-action/approve-pr-action@feat-first-pr
+        with:
+          app_id: ${{vars.DEMO_CLIENT_APP_ID}}
+          app_private_key: ${{secrets.DEMO_CLIENT_PRIVATE_KEY}}
+          server_repository: demo-server
