@@ -4,6 +4,8 @@ on: issue_comment
 jobs:
   update_branch:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions: {}
     if: github.event.issue.pull_request && contains(fromJSON('["/update-branch", "/ub"]'), github.event.comment.body)
     steps:
       - uses: securefix-action/update-branch-action@49cbdc4eb09d785872ff68c4f93f363606350b0f # v0.1.0
