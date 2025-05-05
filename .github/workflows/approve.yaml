@@ -10,14 +10,9 @@ jobs:
       pull-requests: read
       contents: read
     steps:
-      - uses: securefix-action/approve-pr-action/validate@split-actions
-        id: validate
+      - uses: securefix-action/approve-pr-action@merge-actions
         with:
-          github_token: ${{ github.token }}
           pull_request_number: ${{ github.event.issue.number }}
-      - uses: securefix-action/approve-pr-action@split-actions
-        if: steps.validate.outputs.approved == 'true'
-        with:
           app_id: ${{vars.DEMO_CLIENT_APP_ID}}
           app_private_key: ${{secrets.DEMO_CLIENT_PRIVATE_KEY}}
-          server_repository: demo-server
+          server_repository_name: demo-server
