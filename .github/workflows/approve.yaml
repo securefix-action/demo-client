@@ -11,7 +11,7 @@ jobs:
       pull-requests: read
       contents: read
     steps:
-      - uses: securefix-action/approve-pr-action@require-server-app
+      - uses: securefix-action/approve-pr-action@5328a39c04f86ef3a21eceff2fbeaf929c02b030 # v0.1.0
         with:
           pull_request_number: ${{ github.event.issue.number }}
           app_id: ${{vars.DEMO_CLIENT_APP_ID}}
