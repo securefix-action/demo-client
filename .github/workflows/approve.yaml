@@ -7,6 +7,7 @@ jobs:
     name: Approve a pull request (${{github.event.issue.number}})
     runs-on: ubuntu-24.04
     if: github.event.issue.pull_request && github.event.comment.body == '/approve'
+    timeout-minutes: 10
     permissions:
       pull-requests: read
       contents: read
