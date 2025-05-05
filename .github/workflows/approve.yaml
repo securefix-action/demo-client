@@ -1,5 +1,6 @@
 ---
 name: Approve pull requests
+run-name: Approve pull requests (${{github.event.issue.number}})
 on: issue_comment
 jobs:
   approve:
