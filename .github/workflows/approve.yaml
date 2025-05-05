@@ -1,23 +1,20 @@
 ---
 name: Approve pull requests
+run-name: Approve pull requests (${{github.event.issue.number}})
 on: issue_comment
 jobs:
   approve:
     name: Approve a pull request (${{github.event.issue.number}})
     runs-on: ubuntu-24.04
     if: github.event.issue.pull_request && github.event.comment.body == '/approve'
+    timeout-minutes: 10
     permissions:
       pull-requests: read
       contents: read
     steps:
-      - uses: securefix-action/approve-pr-action/validate@split-actions
-        id: validate
+      - uses: csm-actions/approve-pr-action@5328a39c04f86ef3a21eceff2fbeaf929c02b030 # v0.1.0
         with:
-          github_token: ${{ github.token }}
           pull_request_number: ${{ github.event.issue.number }}
-      - uses: securefix-action/approve-pr-action@split-actions
-        if: steps.validate.outputs.approved == 'true'
-        with:
           app_id: ${{vars.DEMO_CLIENT_APP_ID}}
           app_private_key: ${{secrets.DEMO_CLIENT_PRIVATE_KEY}}
-          server_repository: demo-server
+          server_repository_name: demo-server
