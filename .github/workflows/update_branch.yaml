@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-24.04
     if: github.event.issue.pull_request && contains(fromJSON('["/update-branch", "/ub"]'), github.event.comment.body)
     steps:
-      - uses: securefix-action/update-branch-action@319069aa30b0b96fbf909a6565b39d6da4d2ab32 # v0.0.1
+      - uses: securefix-action/update-branch-action@fix-client-input
         with:
           app_id: ${{vars.DEMO_CLIENT_APP_ID}}
           app_private_key: ${{secrets.DEMO_CLIENT_PRIVATE_KEY}}
-          server_repository: demo-server
+          server_repository_name: demo-server
